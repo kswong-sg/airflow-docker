@@ -1,4 +1,4 @@
-FROM apache/airflow:1.10.10-2-python3.7 as main
+FROM apache/airflow:1.10.10-python3.7 as main
 
 USER root
 
