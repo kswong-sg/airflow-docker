@@ -26,6 +26,6 @@ RUN pip install --upgrade pip \
 
 # Create and grant access to repository folder
 RUN mkdir -pv "${AIRFLOW_HOME}/repository"; \
-    && chown -R "airflow:root" "${AIRFLOW_USER_HOME_DIR}" "${AIRFLOW_HOME}"; 
+    chown -R "airflow:root" "${AIRFLOW_USER_HOME_DIR}" "${AIRFLOW_HOME}"; 
 
 USER airflow
