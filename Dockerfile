@@ -16,13 +16,16 @@ RUN wget https://download.oracle.com/otn_software/linux/instantclient/instantcli
     && apt-get clean \
     && apt-get update
   
-WORKDIR /opt/airflow
+WORKDIR ${AIRFLOW_HOME}
 
 COPY requirements.txt .
 
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir /opt/airflow/repository
+    && rm -rf /var/lib/apt/lists/*
+
+# Create and grant access to repository folder
+RUN mkdir -pv "${AIRFLOW_HOME}/repository"; \
+    && chown -R "airflow:root" "${AIRFLOW_USER_HOME_DIR}" "${AIRFLOW_HOME}"; 
 
 USER airflow
