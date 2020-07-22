@@ -16,12 +16,13 @@ RUN wget https://download.oracle.com/otn_software/linux/instantclient/instantcli
     && apt-get clean \
     && apt-get update
   
-WORKDIR /
+WORKDIR /opt/airflow
 
 COPY requirements.txt .
 
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir /opt/airflow/repository
 
 USER airflow
