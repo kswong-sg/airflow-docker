@@ -3,7 +3,7 @@ FROM apache/airflow:1.10.10-2-python3.7 as main
 USER root
 
 RUN apt-get update \
-    && apt-get install gcc libffi-dev python-dev libssl-dev -y libaio1 wget unzip
+    && apt-get install gcc g++ libffi-dev python-dev libssl-dev libsnappy-dev -y libaio1 wget unzip
 
 WORKDIR /opt/oracle
 RUN wget https://download.oracle.com/otn_software/linux/instantclient/instantclient-basiclite-linuxx64.zip \
